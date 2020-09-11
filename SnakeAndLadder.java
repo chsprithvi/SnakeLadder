@@ -48,7 +48,7 @@ public class SnakeAndLadder
 		    	System.out.println("*******NO-PLAY*******");
         }
         if (pos>=100) {
-            System.out.println("The NEW-position of the player is 100 \n YOU WON THE GAME";    
+            System.out.println("The NEW-position of the player is 100 \n YOU WON THE GAME");    
             
         } else {
             System.out.println("The NEW-position of the player is "+this.getPosition());    
