@@ -45,7 +45,6 @@ public class SnakeAndLadder
 				{
 					this.setPosition(pos);
 					System.out.println(" ^_^ You Win ^_^ \n You are at "+this.getPosition());
-					//return;
 				}
 				this.setPosition(pos);
 			    break;
