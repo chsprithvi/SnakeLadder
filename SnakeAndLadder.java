@@ -93,7 +93,7 @@ public class SnakeAndLadder
 		return value;
 	} 
 
-    //use case5    
+ 
 public static void main(String[] args) {
     	//obj for player1
         SnakeAndLadder player1 = new SnakeAndLadder();
