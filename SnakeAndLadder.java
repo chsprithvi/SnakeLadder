@@ -1,9 +1,8 @@
-import java.util.Random;
+import java.util.*;
 
-public class SnakeAndLadder
-{
+public class SnakeAndLadder{
     int position=0;
-	int diceCOunt=0;
+   	
     //Function for rolling a dice
 	public int rollDice()
 	{
@@ -14,60 +13,63 @@ public class SnakeAndLadder
     }
 
 	//function for playing game
-	public void startGame() {
-		
-		System.out.println("*********SnakeAndLadder********");
-
-		while (this.getPosition()<100) {
-			System.out.println("#########--New Throw--########");		
+	public void startGame(String playerName) {
+		        
+        System.out.println("#########--New Throw--########");		
         int pos = getPosition();
-        System.out.println("The present position of player is: "+pos);
+        System.out.println("The present position of "+playerName+" is: "+pos);
         
         //Rolling a dice
 		int diceValue = rollDice();
-		diceCOunt++;
+		
 		System.out.println("The number on dice is "+diceValue);
         
         //option function
         int optionResult = option();
         
         switch(optionResult){
-		    //Ladder on block 
-		    case 1 :
-			    System.out.println("******LADDER******");
+			//Ladder Position
+			case 1 :
+				System.out.println("You got a Ladder");
 				pos += diceValue;
-				if(pos > 100)
-				{
+				if(pos > 100){
 					int numberNeed = 100 - this.getPosition();
-					System.out.println("You need "+numberNeed+" to Win");
-					continue;
-				}
-				if(pos == 100) 
-				{
+					
+					System.out.println("Sorry, You need " + numberNeed + " to Win");
+					pos -= diceValue;
+                }
+				
+				if(pos == 100 ) {
 					this.setPosition(pos);
-					System.out.println(" ^_^ You Win ^_^ \n You are at "+this.getPosition());
+					System.out.println("+++++++++++++Winning Player+++++++++++++");
+					System.out.println(playerName);
+					System.out.println("Hurray You Win, You are at "+this.getPosition());
+					System.exit(0);
 				}
 				this.setPosition(pos);
-			    break;
-		    //Snake on block
-		    case 2:
-			    System.out.println("*****SNAKE*****");
-			    pos -= diceValue;
-		    	this.setPosition(pos);
-		    	break;
-		    //No change
-		    default:
-		    	System.out.println("*******NO-PLAY*******");
+				System.out.println("The position of the player is "+this.getPosition());
+				//If got ladder then calling play function
+                this.startGame(playerName);
+                break;
+			
+			//Snake Position
+			case 2:
+				System.out.println("You got a Snake");
+				pos -= diceValue;
+				
+				this.setPosition(pos);
+				
+				System.out.println("The position of the player is "+this.getPosition());
+				break;
+			
+			//No Play
+			default:
+				System.out.println("You got a NoPlay");
+				System.out.println("The position of the player is "+this.getPosition());
+			
         }
-
-        System.out.println("The NEW-position of the player is "+this.getPosition());    
-        
-		}
-		System.out.println("The total number of times dice rolled is :"+diceCOunt);
     }
-        
-        
-	
+
 	/**
 	 * @return : position
 	 */
@@ -100,13 +102,24 @@ public class SnakeAndLadder
 		int value = rand.nextInt(3)+1;
 		return value;
 	} 
-
  
-public static void main(String[] args) {
-    	//obj for player1
-        SnakeAndLadder player1 = new SnakeAndLadder();
-        System.out.println("Player position:"+player1.position);
-        
-        player1.startGame();
-}
+    public static void main(String[] args) {
+		//Creating object for SnakeAndLadder Class
+		int numberOfPlayers=2;
+		ArrayList<SnakeAndLadder> playerList = new ArrayList<SnakeAndLadder>(numberOfPlayers);
+		
+		for(int i = 0; i < numberOfPlayers; i++) {
+			SnakeAndLadder ObjSnakeLadder = new SnakeAndLadder();
+			playerList.add(ObjSnakeLadder);
+		}
+		System.out.println(playerList);
+		
+		while(true) {
+			for(int i = 0; i < playerList.size(); i++) {
+				int playerNumber = i + 1;
+				System.out.println("\n Game Started for Player"+playerNumber);
+				playerList.get(i).startGame("Player "+playerNumber);
+			}		
+		}
+	} 
 }
