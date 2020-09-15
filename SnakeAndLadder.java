@@ -15,6 +15,9 @@ public class SnakeAndLadder
 
 	//function for playing game
 	public void startGame() {
+        while (this.getPosition()<100) {
+            
+        
         
 		System.out.println("*********SnakeAndLadder********");
         int pos = getPosition();
@@ -44,8 +47,15 @@ public class SnakeAndLadder
 		    default:
 		    	System.out.println("*******NO-PLAY*******");
         }
-        System.out.println("The NEW-position of the player is "+this.getPosition());     
-
+        if (pos>=100) {
+            System.out.println("The NEW-position of the player is 100 \n YOU WON THE GAME";    
+            
+        } else {
+            System.out.println("The NEW-position of the player is "+this.getPosition());    
+        }
+        
+             
+        }
     }
         
         
