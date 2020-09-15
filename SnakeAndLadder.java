@@ -3,7 +3,7 @@ import java.util.Random;
 public class SnakeAndLadder
 {
     int position=0;
-
+	int diceCOunt=0;
     //Function for rolling a dice
 	public int rollDice()
 	{
@@ -24,8 +24,9 @@ public class SnakeAndLadder
         System.out.println("The present position of player is: "+pos);
         
         //Rolling a dice
-        int diceValue = rollDice();
-        System.out.println("The number on dice is "+diceValue);
+		int diceValue = rollDice();
+		diceCOunt++;
+		System.out.println("The number on dice is "+diceValue);
         
         //option function
         int optionResult = option();
@@ -61,7 +62,8 @@ public class SnakeAndLadder
 
         System.out.println("The NEW-position of the player is "+this.getPosition());    
         
-        }
+		}
+		System.out.println("The total number of times dice rolled is :"+diceCOunt);
     }
         
         
