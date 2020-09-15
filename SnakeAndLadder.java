@@ -15,11 +15,11 @@ public class SnakeAndLadder
 
 	//function for playing game
 	public void startGame() {
-        while (this.getPosition()<100) {
-            
-        
-        
+		
 		System.out.println("*********SnakeAndLadder********");
+
+		while (this.getPosition()<100) {
+			System.out.println("#########--New Throw--########");		
         int pos = getPosition();
         System.out.println("The present position of player is: "+pos);
         
@@ -34,8 +34,19 @@ public class SnakeAndLadder
 		    //Ladder on block 
 		    case 1 :
 			    System.out.println("******LADDER******");
-			    pos += diceValue;
-			    this.setPosition(pos);
+				pos += diceValue;
+				if(pos > 100)
+				{
+					int numberNeed = 100 - this.getPosition();
+					System.out.println("You need "+numberNeed+" to Win");
+					continue;
+				}
+				if(pos == 100) 
+				{
+					this.setPosition(pos);
+					System.out.println(" ^_^ You Win ^_^ \n You are at "+this.getPosition());
+				}
+				this.setPosition(pos);
 			    break;
 		    //Snake on block
 		    case 2:
@@ -47,14 +58,9 @@ public class SnakeAndLadder
 		    default:
 		    	System.out.println("*******NO-PLAY*******");
         }
-        if (pos>=100) {
-            System.out.println("The NEW-position of the player is 100 \n YOU WON THE GAME";    
-            
-        } else {
-            System.out.println("The NEW-position of the player is "+this.getPosition());    
-        }
+
+        System.out.println("The NEW-position of the player is "+this.getPosition());    
         
-             
         }
     }
         
@@ -93,7 +99,7 @@ public class SnakeAndLadder
 		return value;
 	} 
 
-    
+ 
 public static void main(String[] args) {
     	//obj for player1
         SnakeAndLadder player1 = new SnakeAndLadder();
