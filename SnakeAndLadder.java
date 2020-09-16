@@ -105,7 +105,7 @@ public class SnakeAndLadder{
  
     public static void main(String[] args) {
 		//Creating object for SnakeAndLadder Class
-		int numberOfPlayers=2;
+		int numberOfPlayers=5;
 		ArrayList<SnakeAndLadder> playerList = new ArrayList<SnakeAndLadder>(numberOfPlayers);
 		
 		for(int i = 0; i < numberOfPlayers; i++) {
